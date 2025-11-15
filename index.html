@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>代码存储</title>
+    <style>
+        :root { --bg: #0f172a; --panel: #111827; --accent: #22c55e; --accent-2: #3b82f6; --text: #e5e7eb; --muted: #94a3b8; --border: #1f2937; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: radial-gradient(1200px 600px at 10% 0%, #0b1324 10%, #0f172a 70%), #0f172a; color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+        .container { max-width: 980px; margin: 40px auto; padding: 0 20px; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+        .title { font-size: 24px; font-weight: 600; letter-spacing: .5px; }
+        .subtitle { color: var(--muted); font-size: 14px; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 960px) { .grid { grid-template-columns: 1fr 1fr; } }
+        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 1px 0 #00000040; }
+        .card-header { padding: 14px 16px; border-bottom: 1px solid var(--border); font-weight: 600; }
+        .card-body { padding: 16px; }
+        .upload { display: grid; gap: 12px; }
+        .file-row { display: flex; gap: 12px; align-items: center; }
+        .file-input { position: relative; }
+        .file-input input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+        .file-input .fake { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px dashed #475569; border-radius: 10px; color: var(--muted); background: #0b1220; }
+        .btn { display: inline-block; padding: 8px 12px; background: linear-gradient(90deg, var(--accent), #16a34a); color: #07120b; font-weight: 700; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; box-shadow: inset 0 -1px 0 #00000020; }
+        .btn.secondary { background: linear-gradient(90deg, var(--accent-2), #2563eb); color: #0b1020; }
+        .hint { color: var(--muted); font-size: 12px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
+        th { text-align: left; color: var(--muted); font-weight: 600; font-size: 13px; }
+        .filename { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace; font-size: 13px; }
+        .preset { display: flex; justify-content: space-between; align-items: center; }
+        .preset-name { font-family: ui-monospace; }
+        .notice { margin-bottom: 16px; padding: 10px 12px; border: 1px solid #14532d; background: #052e16; color: #86efac; border-radius: 10px; }
+        .notice.error { border-color: #1e3a8a; background: #0b1f4e; color: #93c5fd; }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div>
+                    <div class="title">代码存储</div>
+                    <div class="subtitle">上传 .py 文件，集中管理与下载</div>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">上传</div>
+                    <div class="card-body">
+                        <form class="upload">
+                            <div class="file-row">
+                                <div class="file-input">
+                                    <div class="fake">选择文件或文件夹</div>
+                                    <input type="file" multiple webkitdirectory>
+                                </div>
+                                <a class="btn" href="#" onclick="return false;">上传</a>
+                            </div>
+                            <div class="hint">仅接收 .py 文件；选择文件夹时将自动上传其中的 .py 文件。</div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">预置文件</div>
+                    <div class="card-body">
+                        <div class="preset"><span class="preset-name">interface_demo.py</span><a class="btn" href="interface_demo.py" download="interface_demo.py">下载</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top:16px;">
+                <div class="card-header">已存储的文件</div>
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr><th>文件名</th><th>大小</th><th>时间</th><th>操作</th></tr>
+                        </thead>
+                        <tbody>
+                                <tr><td colspan="4" class="hint">暂无文件</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
